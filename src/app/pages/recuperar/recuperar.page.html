@@ -4,10 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">recuperar</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>RECUPERAR CUENTA</ion-card-header>
+    <ion-card-content>
+      <ion-input type="text" label="Ingrese correo"></ion-input>
+    </ion-card-content>
+    <ion-button><a href="../prueba-botones/prueba-botones.page.htmls"></a></ion-button>
+    <ion-button (click)="enviarCorreo()" class="enviar-correo" expand="full">
+      <ion-icon [ngClass]="{'animar': animarIcono}" slot="start" name="mail"></ion-icon>
+      Enviar Correo
+    </ion-button>
+  
+    <div *ngIf="enviado" class="mensaje-envio">¡Correo enviado exitosamente!</div>
+  </ion-card>
 </ion-content>

@@ -5,7 +5,50 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>Informacion usuario</ion-card-header>
+    <ion-card-content>
+      <form [formGroup] = "persona" (ngSubmit)="registrar()">
+        <p>{{persona.value | json}}</p>
+        <ion-input formControlName="nombre" type="text" label="NOMBRE"></ion-input>
+        <br>
+        <ion-input formControlName="apellido" type="text" label="APELLIDO"></ion-input>
+        <br>
+        <ion-input formControlName="rut" type="text" label="RUT"></ion-input>
+        <br>
+        <ion-input formControlName="correo" type="text" label="CORREO"></ion-input>
+        <br>
+        <ion-input formControlName="fecha_naci" type="date">FECHA DE NACIMIENTO</ion-input>
+        <br>
+        <ion-input formControlName="password" type="password" label="CONTRASEÑA"></ion-input>
+        <br>
+        <ion-input formControlName="confi_password" type="password" label="CONFIRMAR CONTRASEÑA"></ion-input>
+        <br>
+        <ion-select label="GENERO" formControlName="genero">
+          <ion-select-option value="Masculino">Masculino</ion-select-option>
+          <ion-select-option value="Femenino">Femenino</ion-select-option>
+          <ion-select-option value="N/A">Prefiero no decirlo</ion-select-option>
+        </ion-select>
 
-  
+        <ion-select formControlName="veiculo" label="¿TIENE AUTITO?" (ionChange)="onOpcionChange($event.detail.value)">
+          <ion-select-option value="SI">Si tengo 😁</ion-select-option>
+          <ion-select-option value="NO">No tengo 😢</ion-select-option>
+        </ion-select>
 
+        <div *ngIf="mostrarInput">
+          <ion-input formControlName="marca" type="text" label="MARCA"></ion-input>
+          <ion-input formControlName="modelo" type="text" label="MODELO"></ion-input>
+          <ion-input formControlName="patente" type="text" label="PATENTE"></ion-input>
+          <ion-input formControlName="canti_acientos" type="number" label="CANTIDAD ACIENTOS"></ion-input>
+        </div>
+        <ion-radio-group formControlName="tipo_user">
+          <ion-item>
+            <ion-radio value="Profesor"></ion-radio>
+            <ion-label>Profesor</ion-label>
+          </ion-item>
+        </ion-radio-group>
+        <ion-button type="submit" size="block" color="warning">REGISTRAR</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

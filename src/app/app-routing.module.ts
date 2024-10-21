@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'registrar',
     pathMatch: 'full'
   },
   {
@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'form-viajes',
     loadChildren: () => import('./pages/form-viajes/form-viajes.module').then( m => m.FormViajesPageModule)
+  },
+  {
+    path: 'prueba-botones',
+    loadChildren: () => import('./pages/prueba-botones/prueba-botones.module').then( m => m.PruebaBotonesPageModule)
   },
 ];
 

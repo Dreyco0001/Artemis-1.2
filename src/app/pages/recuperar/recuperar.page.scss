@@ -1,0 +1,36 @@
+.enviar-correo {
+	position: relative;
+  }
+  
+  .mensaje-envio {
+	margin-top: 20px;
+	color: green;
+	font-size: 18px;
+	text-align: center;
+	animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animar {
+	animation: volar 0.5s forwards;
+  }
+  
+  @keyframes volar {
+	0% {
+	  transform: translate(0, 0);
+	  opacity: 1; 
+	}
+	100% {
+	  transform: translate(200px, 0); 
+	  opacity: 0;
+	}
+  }
+  
+  @keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+	to {
+	  opacity: 1;
+	}
+  }
+  

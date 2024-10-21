@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>prueba_botones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="button-container">
+    <ion-button (click)="onDelete()" class="delete-button">
+      Eliminar
+    </ion-button>
+    <div class="trash-bin" *ngIf="deleted">
+      🗑️
+    </div>
+    <div class="paper" *ngIf="showPaper"></div>
+  </div>
+</ion-content>
+
+
