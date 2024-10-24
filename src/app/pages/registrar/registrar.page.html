@@ -41,13 +41,8 @@
           <ion-input formControlName="patente" type="text" label="PATENTE"></ion-input>
           <ion-input formControlName="canti_acientos" type="number" label="CANTIDAD ACIENTOS"></ion-input>
         </div>
-        <ion-radio-group formControlName="tipo_user">
-          <ion-item>
-            <ion-radio value="Profesor"></ion-radio>
-            <ion-label>Profesor</ion-label>
-          </ion-item>
-        </ion-radio-group>
-        <ion-button type="submit" size="block" color="warning">REGISTRAR</ion-button>
+        
+        <ion-button [disabled]="persona.invalid" type="submit" size="block" color="warning">REGISTRAR</ion-button>
       </form>
     </ion-card-content>
   </ion-card>

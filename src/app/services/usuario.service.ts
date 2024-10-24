@@ -26,12 +26,15 @@ export class UsuarioService {
       marca: '',
       patente: '',
       modelo: '',
+      canti_acientos: '',
     }
     await this.crearUsuario(admin);
   }
-
+  
   private usuarioValido: string ="";
-
+  private AlumnoCorreo = /^[a-zA-Z0-9._%+-]+@duocuc\.cl$/;
+  private ProfeCorreo = /^[a-zA-Z0-9._%+-]+@profesor\.duocuc\.cl$/;
+  
   public async crearUsuario(usuario: any): Promise<boolean>{
 
     let usuarios: any[] = await this.storage.get("Usuarios") || [];
@@ -41,11 +44,22 @@ export class UsuarioService {
       return false;
       
     }
+
+    if (!this.ProfeCorreo.test(usuario.correo) && !this.AlumnoCorreo.test(usuario.correo)){
+      return false;
+    } 
+  
+    if(this.ProfeCorreo.test(usuario.correo)){
+      usuario.tipo_user = "Profesor"
+    }
+    
+    console.log(usuario.correo);
+    console.log(usuario.tipo_user);
     
     return true;
     
   }
-  
+
   public async getUsuario(rut: string){
     let usuarios: any[] = await this.storage.get("Usuarios") || [];
     return usuarios.find(user =>user.rut === rut)

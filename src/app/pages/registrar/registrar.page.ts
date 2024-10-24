@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -33,7 +33,7 @@ export class RegistrarPage implements OnInit {
     nombre: new FormControl(),
     apellido: new FormControl(),
     rut: new FormControl(),
-    correo: new FormControl(),
+    correo: new FormControl('',[Validators.required, Validators.pattern("[a-zA-Z0-9.]+(@duocuc.cl) || (@profesor.duocuc.cl)")]),
     fecha_naci: new FormControl(),
     password: new FormControl(),
     confi_password: new FormControl(),
@@ -100,21 +100,6 @@ export class RegistrarPage implements OnInit {
       alert("las contraseñas no coinciden")
       return;
     }
-
-    
-    let correo = this.persona.value.correo
-    let AlumnoCorreo = ("[a-zA-Z0-9.]+(@duocuc.cl)")
-    let ProfeCorreo = ("[a-zA-Z0-9.]+(@profesor.duocuc.cl)")
-    let correo2 = this.persona.value.correo.AlumnoCorreo
-    let correo3 = this.persona.value.correo.ProfeCorreo
-
-    
-    if(correo.AlumnoCorreo){
-      console.log("HOLA")
-    }else if(correo.ProfeCorreo){
-      console.log("hola1")
-    }
-    
     
     
     if(this.persona.controls.password.value != this.persona.controls.confi_password.value){
