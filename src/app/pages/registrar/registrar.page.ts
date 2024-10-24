@@ -11,6 +11,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class RegistrarPage implements OnInit {
   
+  enviado = false;
+  animarIcono = false;
+
   miFormulario: FormGroup;
   mostrarInput: boolean = false;
 
@@ -30,16 +33,16 @@ export class RegistrarPage implements OnInit {
   }
 
   persona = new FormGroup({
-    nombre: new FormControl(),
-    apellido: new FormControl(),
-    rut: new FormControl(),
-    correo: new FormControl('',[Validators.required, Validators.pattern("[a-zA-Z0-9.]+(@duocuc.cl) || (@profesor.duocuc.cl)")]),
-    fecha_naci: new FormControl(),
-    password: new FormControl(),
-    confi_password: new FormControl(),
-    genero: new FormControl(),
+    nombre: new FormControl('', [Validators.maxLength(10), Validators.minLength(4),Validators.required]),
+    apellido: new FormControl('', [Validators.maxLength(10), Validators.minLength(4),Validators.required]),
+    rut: new FormControl('', [Validators.maxLength(10), Validators.minLength(9),Validators.required]),
+    correo: new FormControl('',[Validators.minLength(4),Validators.required, Validators.pattern("[a-zA-Z0-9.]+(@duocuc.cl) || [a-zA-Z0-9.]+(@profesor.duocuc.cl)")]),
+    fecha_naci: new FormControl('', Validators.required),
+    password: new FormControl('',[Validators.maxLength(10), Validators.minLength(4)]),
+    confi_password: new FormControl('',[Validators.maxLength(10), Validators.minLength(4)]),
+    genero: new FormControl(Validators.required),
     tipo_user: new FormControl('Alumno'),
-    veiculo: new FormControl(),
+    veiculo: new FormControl('',[Validators.required]),
     marca: new FormControl(),
     modelo: new FormControl(),
     patente: new FormControl(),
@@ -122,6 +125,16 @@ export class RegistrarPage implements OnInit {
       buttons: ['Entendido'],
     });
     await alert.present();
+  }
+
+  enviarCorreo() {
+    this.enviado = false;
+    this.animarIcono = true;
+
+    setTimeout(() => {
+      this.animarIcono = false;
+      this.enviado = true;
+    }, 2000);
   }
 
 }

@@ -18,11 +18,6 @@ export class RecuperarPage {
     setTimeout(() => {
       this.animarIcono = false;
       this.enviado = true;
-
-      // Aquí puedes agregar la lógica real para enviar el correo
-
-
-      
     }, 2000);
   }
 }
