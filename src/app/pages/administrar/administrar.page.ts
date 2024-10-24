@@ -16,13 +16,13 @@ export class AdministrarPage implements OnInit {
     private alertController: AlertController) { 
       
     }
-    Usuarios: any[] = [];
+   
 
   async ngOnInit() {
     this.Usuarios = await this.usuarioService.getUsuarios();
   }
 
-  persona = new FormGroup({
+  Usuario = new FormGroup({
     nombre: new FormControl(),
     apellido: new FormControl(),
     rut: new FormControl(),
@@ -37,9 +37,11 @@ export class AdministrarPage implements OnInit {
     modelo: new FormControl(),
     patente: new FormControl(),
   })
+  Usuarios: any[] = [];
 
+  
   buscar(usuario: any) {
-    this.persona.patchValue(usuario);
+    this.Usuario.patchValue(usuario);
   }
 
   async eliminar(rut: string) {
@@ -50,17 +52,17 @@ export class AdministrarPage implements OnInit {
 
   async registrar() {
     
-    if(this.persona.controls.password.value != this.persona.controls.confi_password.value){
+    if(this.Usuario.controls.password.value != this.Usuario.controls.confi_password.value){
       alert("las contraseñas no coinciden")
       return;
     }
     
     
-    if(this.persona.controls.password.value != this.persona.controls.confi_password.value){
+    if(this.Usuario.controls.password.value != this.Usuario.controls.confi_password.value){
       await this.presentAlert('Problema', 'las contraseñas no coinsiden');
-    }else if ( await this.usuarioService.crearUsuario(this.persona.value)){
+    }else if ( await this.usuarioService.crearUsuario(this.Usuario.value)){
       await this.presentAlert('Perfecto', 'Registrado correctamente');
-      this.persona.reset();
+      this.Usuario.reset();
       await this.usuarioService.getUsuarios();
       this.router.navigate(['']);  
     } else {

@@ -14,36 +14,36 @@
         <ion-card>
           <ion-card-header>Informacion usuario</ion-card-header>
           <ion-card-content>
-            <form [formGroup]="persona" (ngSubmit)="registrar()">
-              <ion-input type="text" label="NOMBRE"></ion-input>
+            <form [formGroup]="Usuario" (ngSubmit)="registrar()">
+              <ion-input formControlName="nombre" type="text" label="NOMBRE"></ion-input>
               <br>
-              <ion-input type="text" label="APELLIDO"></ion-input>
+              <ion-input formControlName="apellido" type="text" label="APELLIDO"></ion-input>
               <br>
-              <ion-input type="text" label="RUT"></ion-input>
+              <ion-input formControlName="rut" type="text" label="RUT"></ion-input>
               <br>
-              <ion-input type="text" label="CORREO"></ion-input>
+              <ion-input formControlName="correo" type="text" label="CORREO"></ion-input>
               <br>
-              <ion-input type="date">FECHA DE NACIMIENTO</ion-input>
+              <ion-input formControlName="fecha_naci" type="date">FECHA DE NACIMIENTO</ion-input>
               <br>
-              <ion-select label="GENERO">
+              <ion-select formControlName="genero" label="GENERO">
                 <ion-select-option value="Masculino">Masculino</ion-select-option>
                 <ion-select-option value="Femenino">Femenino</ion-select-option>
                 <ion-select-option value="N/A">Prefiero no decirlo</ion-select-option>
               </ion-select>
 
-              <ion-select label="¿TIENE AUTITO?">
+              <ion-select formControlName="veiculo" label="¿TIENE AUTITO?">
                 <ion-select-option value="SI">Si tengo 😢</ion-select-option>
                 <ion-select-option value="NO">No tengo 😁</ion-select-option>
               </ion-select>
 
               <div>
-                <ion-input type="text" label="MARCA"></ion-input>
-                <ion-input type="text" label="MODELO"></ion-input>
-                <ion-input type="text" label="PATENTE"></ion-input>
-                <ion-input type="number" label="CANTIDAD ACIENTOS"></ion-input>
+                <ion-input formControlName="marca" type="text" label="MARCA"></ion-input>
+                <ion-input formControlName="modelo" type="text" label="MODELO"></ion-input>
+                <ion-input formControlName="patente" type="text" label="PATENTE"></ion-input>
+                <ion-input formControlName="" type="number" label="CANTIDAD ACIENTOS"></ion-input>
               </div>
 
-              <ion-radio-group>
+              <ion-radio-group formControlName="tipo_user">
                 <ion-item>
                   <ion-radio value="Admin"></ion-radio>
                   <ion-label>Administrador</ion-label>
@@ -75,8 +75,8 @@
                   Rut: {{ usuario.rut }} | Nombre: {{ usuario.nombre }} {{usuario.apellido }} | Auto: {{ usuario.veiculo }}
                 </ion-item>
                 <ion-item-options>
-                  <ion-item-option (click) = "buscar(usuario)">
-                    <ion-icon></ion-icon>
+                  <ion-item-option (click)="buscar(usuario)">
+                    <ion-icon name="search"></ion-icon>
                     BUSCAR
                   </ion-item-option>
                   <ion-item-option (click)="eliminar(usuario.rut)">
